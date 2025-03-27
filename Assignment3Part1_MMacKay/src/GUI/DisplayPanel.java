@@ -1,5 +1,9 @@
 package GUI;
 
+import Classes.Cleric;
+import Classes.Warrior;
+import Classes.Wizard;
+
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,5 +1,7 @@
 package Classes;
 
+import GUI.ChoosePanel;
+
 public abstract class Character {
 
     //Declare properties of ANY shape
