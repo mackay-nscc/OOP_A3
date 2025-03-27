@@ -1,84 +1,51 @@
 package GUI;
 
-import Classes.*;
-import Classes.Rectangle;
-
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class MainFrame extends JFrame {
 
-    private static Circle theCircle;
-    private static Rectangle theRectangle;
-    private static Triangle theTriangle;
-    private static ArrayList<ShapeColor> colors = new ArrayList<ShapeColor>();
-    private static int selectedColor = 0;
-
-    public MainFrame() {    //Constructor
-
-        // Create list of color objects
-        ShapeColor redColor = new ShapeColor("Red", 255, 0, 0);
-        ShapeColor greenColor = new ShapeColor("Green", 0, 255, 0);
-        ShapeColor blueColor = new ShapeColor("Blue", 0, 0, 255);
-
-        colors.add(redColor);
-        colors.add(greenColor);
-        colors.add(blueColor);
-
-        //Create "default" shape objects
-        theCircle = new Circle(null, 10);
-        theRectangle = new Rectangle(null, 5, 20);
-        theTriangle = new Triangle(null, 12, 19);
-
-        //Set Frame Properties
+    public MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 750, 750);
-        setTitle("Shapetastic!");
-        setLayout(new CardLayout());
+        setTitle("Dungeon and Dragon!!");
 
-        //Add Panel "screens"
-        ChoosePanel chooseScreen = new ChoosePanel();
-        DisplayPanel displayScreen = new DisplayPanel();
-        add(chooseScreen);
-        add(displayScreen);
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-        //Set Nav buttons
-        JButton displayBtn = chooseScreen.getDisplayBtn();
-        displayBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                chooseScreen.setVisible(false);
-                chooseScreen.createShape();
-                displayScreen.displayChoice();
-                displayScreen.setVisible(true);
-            }
+        JLabel titleLabel = new JLabel("Dungeon and Dragon Game", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        mainPanel.add(titleLabel, BorderLayout.NORTH);
+
+        JPanel subPanel = new JPanel();
+        subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
+        subPanel.setBackground(Color.WHITE);
+
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/startPage.jpg"));
+        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        subPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+        subPanel.add(imageLabel);
+
+        JButton startButton = new JButton("Start RPG Game");
+        startButton.addActionListener(e -> {
+            // Add the code to handle button click and change to the next page here
+            SecondFrame secondFrame = new SecondFrame();
+            secondFrame.setVisible(true);
+            dispose();
         });
-    }
 
-    public static Circle getTheCircle() {
-        return theCircle;
-    }
+        startButton.setPreferredSize(new Dimension(200, 100));
+        startButton.setMaximumSize(new Dimension(200, 100));
+        startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        subPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        subPanel.add(startButton);
+        subPanel.add(Box.createVerticalGlue());
 
-    public static Rectangle getTheRectangle() {
-        return theRectangle;
-    }
+        mainPanel.add(subPanel, BorderLayout.CENTER);
+        add(mainPanel);
 
-    public static Triangle getTheTriangle() {
-        return theTriangle;
-    }
-
-    public static ArrayList<ShapeColor> getColors() {
-        return colors;
-    }
-
-    public static void setSelectedColor(int index) {
-        MainFrame.selectedColor = index;
-    }
-
-    public static int getSelectedColor() {
-        return MainFrame.selectedColor;
-    }
-}
+        setVisible(true);
+    }}
