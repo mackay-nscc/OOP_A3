@@ -9,21 +9,23 @@ import java.awt.event.ActionListener;
 public class MainFrame extends JFrame {
 
     public MainFrame() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 750, 750);
-        setTitle("DND Game");
 
         JPanel mainPanel = new JPanel();
 
         JLabel titleLabel = new JLabel("Dungeon and Dragon", SwingConstants.CENTER);
+        mainPanel.setBackground(new Color(132, 151, 215));
         titleLabel.setFont(new Font("Old English Text MT", Font.BOLD, 48));
         mainPanel.add(titleLabel);
-        mainPanel.setBackground(Color.WHITE);
+
 
 
         JPanel subPanel = new JPanel();
+        subPanel.setBackground(new Color(132, 151, 215));
         subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
-        subPanel.setBackground(Color.WHITE);
+
 
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("/images/startPage.jpg"));
         JLabel imageLabel = new JLabel(imageIcon);
@@ -35,7 +37,9 @@ public class MainFrame extends JFrame {
         startButton.addActionListener(e -> {
             // Add the code to handle button click and change to the next page here
             SecondFrame secondFrame = new SecondFrame();
+            secondFrame.setBackground((new Color(132, 151, 215)));
             secondFrame.setVisible(true);
+            secondFrame.setLocationRelativeTo(null);
             dispose();
         });
 
@@ -46,6 +50,7 @@ public class MainFrame extends JFrame {
         subPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         subPanel.add(startButton);
         subPanel.add(Box.createVerticalGlue());
+        subPanel.setBackground(new Color(132, 151, 215));
 
         mainPanel.add(subPanel, BorderLayout.CENTER);
         add(mainPanel);

@@ -46,6 +46,7 @@ public class ChoosePanel extends JPanel {
         Font screenTitle = new Font("Old English Text MT", Font.BOLD, 40);
         Font selectTile = new Font("Old English Text MT", Font.BOLD, 30);
         Font informaion = new Font("Calibri", Font.BOLD, 18);
+
         //Set Panel Properties
         setLayout(null);
         setVisible(true);
@@ -131,18 +132,20 @@ public class ChoosePanel extends JPanel {
 
         //Label for shape image
         imageLabel = new JLabel();
+        imageLabel.setText("Select a Class");
         imageLabel.setBounds(240, 170, 150, 150);
 
         imageLabelWeapon = new JLabel();
+        imageLabelWeapon.setText("Select a Weapon");
         imageLabelWeapon.setBounds(240, 450, 150, 150);
 
         //Change screen button
         battleStartBtn = new JButton("Start Battle");
-        battleStartBtn.setFont(myFont);
+        battleStartBtn.setFont(new Font("Old English Text MT", Font.BOLD, 20));
         battleStartBtn.setBounds(500, 700, 200, 50);
 
         rerollBtn = new JButton("Reroll");
-        rerollBtn.setFont(myFont);
+        rerollBtn.setFont(new Font("Old English Text MT", Font.BOLD, 20));
         rerollBtn.setBounds(500, 320, 200, 50);
 
         //Add all controls to Panel
@@ -275,7 +278,7 @@ public class ChoosePanel extends JPanel {
         rdoCleric.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 cleric = SecondFrame.getTheCleric();
-                characterInformation.setText(cleric.getCharactorInformString());
+                characterInformation.setText(cleric.getCharactorInformString().trim());
                 swapImages(cleric.getClericPic());
                 createCharacterStats();
             }

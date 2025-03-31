@@ -9,7 +9,10 @@ public class Main {
             public void run() {
                 try {
                     MainFrame frame = new MainFrame();
+                    frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
+                    ;
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

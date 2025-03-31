@@ -29,7 +29,7 @@ public class DisplayPanel extends JPanel {
 
         // Create and set the title label
         JLabel choiceLabel = new JLabel("Battle Go The Death!");
-        choiceLabel.setFont(new Font("Calibri", Font.BOLD, 50));
+        choiceLabel.setFont(new Font("Old English Text MT", Font.BOLD, 50));
         choiceLabel.setBounds(150, 10, 480, 50);
 
         // Create and set the text area
@@ -47,14 +47,22 @@ public class DisplayPanel extends JPanel {
         monsterImageLabel.setBounds(400, 150, 150, 150);
 
         // Create a back button and add an action listener
-        JButton backButton = new JButton("Back to Character Selection");
+        JButton backButton = new JButton("Play Again");
         backButton.setBounds(280, 650, 200, 50);
+        backButton.setFont(new Font("Old English Text MT", Font.BOLD, 20));
         backButton.addActionListener(e -> {
 //
 
             initial = false;
-            SwingUtilities.invokeLater(MainFrame::new);
             secondFrame.dispose(); // Close the current SecondFrame
+
+
+            SwingUtilities.invokeLater(() -> {
+                MainFrame newFrame = new MainFrame();
+                newFrame.setLocationRelativeTo(null); // Ensure centering
+            });
+
+
         });
 
         // Add components to the panel
@@ -78,13 +86,13 @@ public class DisplayPanel extends JPanel {
         // Display character image and information based on the selected character
         if (warrior.getName() != null && !warrior.getName().isEmpty()) {
             swapImages(warrior.getWarriorPic());
-            text = warrior.toString();
+            text = warrior.toString().trim();
         } else if (wizard.getName() != null && !wizard.getName().isEmpty()) {
             swapImages(wizard.getWizardPic());
-            text = wizard.toString();
+            text = wizard.toString().trim();
         } else if (cleric.getName() != null && !cleric.getName().isEmpty()) {
             swapImages(cleric.getClericPic());
-            text = cleric.toString();
+            text = cleric.toString().trim();
         }
         // Update display text with character information
         displayText.setText(text);
@@ -102,11 +110,11 @@ public class DisplayPanel extends JPanel {
         }
 
         // Create and set player and monster labels
-        JLabel playerLabel = new JLabel("Player :" + ChoosePanel.getCharacterType());
+        JLabel playerLabel = new JLabel("Player:" + ChoosePanel.getCharacterType());
         playerLabel.setFont(new Font("Calibri", Font.BOLD, 30));
         playerLabel.setBounds(170, 100, 400, 50);
 
-        JLabel monsterLabel = new JLabel("Monster : " + monster);
+        JLabel monsterLabel = new JLabel("Monster: " + monster);
         monsterLabel.setFont(new Font("Calibri", Font.BOLD, 30));
         monsterLabel.setBounds(400, 100, 400, 50);
 
