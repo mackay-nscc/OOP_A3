@@ -17,9 +17,7 @@ public class ChoosePanel extends JPanel {
     private JLabel imageLabel,imageLabelWeapon;
     private static JTextField nameText;
     private JRadioButton rdoWarrior,rdoWizard,rdoCleric;
-    private JRadioButton rdoDagger;
-    private JRadioButton rdoSword;
-    private JRadioButton rdoHammer;
+    private JRadioButton rdoDagger, rdoSword, rdoHammer;
 
     private Warrior warrior = null;
     private Wizard wizard = null;
@@ -45,8 +43,8 @@ public class ChoosePanel extends JPanel {
 
         //Set font object
         Font myFont = new Font("Calibri", Font.BOLD, 22);
-        Font screenTitle = new Font("Calibri", Font.BOLD, 40);
-        Font selectTile = new Font("Calibri", Font.BOLD, 30);
+        Font screenTitle = new Font("Old English Text MT", Font.BOLD, 40);
+        Font selectTile = new Font("Old English Text MT", Font.BOLD, 30);
         Font informaion = new Font("Calibri", Font.BOLD, 18);
         //Set Panel Properties
         setLayout(null);
@@ -242,6 +240,11 @@ public class ChoosePanel extends JPanel {
         rdoDagger.setBounds(50, 460, 150, 50);
         rdoSword.setBounds(50, 520, 150, 50);
         rdoHammer.setBounds(50, 580, 150, 50);
+
+        ButtonGroup grpWeaponRadios = new ButtonGroup();
+        grpWeaponRadios.add(rdoDagger);
+        grpWeaponRadios.add(rdoSword);
+        grpWeaponRadios.add(rdoHammer);
     }
 
     private void addCharacterStats(Font myFont) {
@@ -317,10 +320,10 @@ public class ChoosePanel extends JPanel {
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 100);
             }
-            textField1.setText(String.valueOf(nums[0]));
-            textField2.setText(String.valueOf(nums[1]));
-            textField3.setText(String.valueOf(nums[2]));
-            textField4.setText(String.valueOf(nums[3]));
+            textField1.setText(String.valueOf(nums[0]).trim());
+            textField2.setText(String.valueOf(nums[1]).trim());
+            textField3.setText(String.valueOf(nums[2]).trim());
+            textField4.setText(String.valueOf(nums[3]).trim());
             textField7.setText("Warrior");
             CharacterType = "Warrior";
 
@@ -332,10 +335,10 @@ public class ChoosePanel extends JPanel {
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 100);
             }
-            textField1.setText(String.valueOf(nums[0]));
-            textField2.setText(String.valueOf(nums[1]));
-            textField3.setText(String.valueOf(nums[2]));
-            textField4.setText(String.valueOf(nums[3]));
+            textField1.setText(String.valueOf(nums[0]).trim());
+            textField2.setText(String.valueOf(nums[1]).trim());
+            textField3.setText(String.valueOf(nums[2]).trim());
+            textField4.setText(String.valueOf(nums[3]).trim());
             CharacterType = "Wizard";
         } else if (rdoCleric.isSelected()) {
 
@@ -345,10 +348,10 @@ public class ChoosePanel extends JPanel {
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 100);
             }
-            textField1.setText(String.valueOf(nums[0]));
-            textField2.setText(String.valueOf(nums[1]));
-            textField3.setText(String.valueOf(nums[2]));
-            textField4.setText(String.valueOf(nums[3]));
+            textField1.setText(String.valueOf(nums[0]).trim());
+            textField2.setText(String.valueOf(nums[1]).trim());
+            textField3.setText(String.valueOf(nums[2]).trim());
+            textField4.setText(String.valueOf(nums[3]).trim());
             CharacterType = "Cleric";
         }
 
@@ -356,33 +359,36 @@ public class ChoosePanel extends JPanel {
 
     public void createWeaponStats() {
         if (rdoDagger.isSelected()) {
+            dagger =SecondFrame.getTheDagger();
             // Create 4 random numbers and put them in text boxes
             int[] nums = new int[2];
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 50);
             }
-            textField5.setText(String.valueOf(nums[0]));
-            textField6.setText(String.valueOf(nums[1]));
+            textField5.setText(String.valueOf(nums[0]).trim());
+            textField6.setText(String.valueOf(nums[1]).trim());
             weaponType = "Dagger";
 
         } else if (rdoHammer.isSelected()) {
             // Create 4 random numbers and put them in text boxes
+            hammer =SecondFrame.getTheHammer();
             int[] nums = new int[2];
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 50);
             }
-            textField5.setText(String.valueOf(nums[0]));
-            textField6.setText(String.valueOf(nums[1]));
+            textField5.setText(String.valueOf(nums[0]).trim());
+            textField6.setText(String.valueOf(nums[1]).trim());
             weaponType = "Hammer";
 
         } else if (rdoSword.isSelected()) {
+            sword = SecondFrame.getTheSword();
             // Create 4 random numbers and put them in text boxes
             int[] nums = new int[2];
             for (int i = 0; i < nums.length; i++) {
                 nums[i] = (int) (Math.random() * 50);
             }
-            textField5.setText(String.valueOf(nums[0]));
-            textField6.setText(String.valueOf(nums[1]));
+            textField5.setText(String.valueOf(nums[0]).trim());
+            textField6.setText(String.valueOf(nums[1]).trim());
             weaponType = "Sword";
 
         }
@@ -398,12 +404,12 @@ public class ChoosePanel extends JPanel {
             Arrays.fill(data, 0);
 
         } else {
-            data[0] = Integer.parseInt(textField1.getText());
-            data[1] = Integer.parseInt(textField2.getText());
-            data[2] = Integer.parseInt(textField3.getText());
-            data[3] = Integer.parseInt(textField4.getText());
-            data[4] = Integer.parseInt(textField5.getText());
-            data[5] = Integer.parseInt(textField6.getText());
+            data[0] = Integer.parseInt(textField1.getText().trim());
+            data[1] = Integer.parseInt(textField2.getText().trim());
+            data[2] = Integer.parseInt(textField3.getText().trim());
+            data[3] = Integer.parseInt(textField4.getText().trim());
+            data[4] = Integer.parseInt(textField5.getText().trim());
+            data[5] = Integer.parseInt(textField6.getText().trim());
 
         }
         return data;

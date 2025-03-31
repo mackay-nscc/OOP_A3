@@ -16,7 +16,6 @@ public class SecondFrame extends JFrame {
     private static Sword theSword;
     private static Hammer theHammer;
 
-
     private static Monster theMonster;
 
     private int[] data;
@@ -25,7 +24,7 @@ public class SecondFrame extends JFrame {
         //Set Frame Properties
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 750, 800);
-        setTitle("DND Game!");
+        setTitle("DND Game");
         setLayout(new CardLayout());
 
         //Add Panel "screens"

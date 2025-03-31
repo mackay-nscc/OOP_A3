@@ -11,13 +11,15 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(200, 200, 750, 750);
-        setTitle("Dungeon and Dragon!!");
+        setTitle("DND Game");
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel mainPanel = new JPanel();
 
-        JLabel titleLabel = new JLabel("Dungeon and Dragon Game", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        mainPanel.add(titleLabel, BorderLayout.NORTH);
+        JLabel titleLabel = new JLabel("Dungeon and Dragon", SwingConstants.CENTER);
+        titleLabel.setFont(new Font("Old English Text MT", Font.BOLD, 48));
+        mainPanel.add(titleLabel);
+        mainPanel.setBackground(Color.WHITE);
+
 
         JPanel subPanel = new JPanel();
         subPanel.setLayout(new BoxLayout(subPanel, BoxLayout.Y_AXIS));
@@ -29,7 +31,7 @@ public class MainFrame extends JFrame {
         subPanel.add(Box.createRigidArea(new Dimension(0, 100)));
         subPanel.add(imageLabel);
 
-        JButton startButton = new JButton("Start RPG Game");
+        JButton startButton = new JButton("Build A Character");
         startButton.addActionListener(e -> {
             // Add the code to handle button click and change to the next page here
             SecondFrame secondFrame = new SecondFrame();
@@ -37,8 +39,9 @@ public class MainFrame extends JFrame {
             dispose();
         });
 
-        startButton.setPreferredSize(new Dimension(200, 100));
-        startButton.setMaximumSize(new Dimension(200, 100));
+        startButton.setPreferredSize(new Dimension(300, 50));
+        startButton.setMaximumSize(new Dimension(300, 50));
+        startButton.setFont(new Font("Old English Text MT", Font.BOLD, 24));
         startButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         subPanel.add(Box.createRigidArea(new Dimension(0, 50)));
         subPanel.add(startButton);
